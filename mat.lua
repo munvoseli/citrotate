@@ -135,10 +135,13 @@ accepts vector
 returns array of column vectors
   which represent orthonormal (rotation) matrix.
 
-or, hopefully it's an orthonormal matrix.
+or, hopefully it's a rotation matrix.
 it might flip things sometimes.
-contact me if it does that,
+orthonormal matrices can flip things.
 i have no idea how to fix it.
+if you know when it does that,
+swapping any two columns should fix it,
+but i have no idea how to tell when it does that.
 --]]
 M.getOrthonormalMatrix = orthonormal
 
