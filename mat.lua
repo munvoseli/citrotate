@@ -138,11 +138,7 @@ returns array of column vectors
 or, hopefully it's an orthonormal matrix.
 it might flip things sometimes.
 contact me if it does that,
-might just need to multiply the second column by -1
-if the component of the supplied vector
-with the greatest magnitude has negative direction.
-or it could be something else entirely.
-who knows.
+i have no idea how to fix it.
 --]]
 M.getOrthonormalMatrix = orthonormal
 
