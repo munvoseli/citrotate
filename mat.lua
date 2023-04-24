@@ -103,14 +103,14 @@ function orthonormal(vec)
 	for i=c+1,#vec do
 		table.insert(vecs, getcompvec(i, #vec))
 	end
-	printSquareMatrix(vecs)
-	for i=2,#vecs do
-		vecs[i] = gramschmidt(vecs, i-1, vecs[i])
-	end
 	if shouldFlip then
 		for i=1,#vec do
 			vecs[2][i] = vecs[2][i] * -1
 		end
+	end
+	--printSquareMatrix(vecs)
+	for i=2,#vecs do
+		vecs[i] = gramschmidt(vecs, i-1, vecs[i])
 	end
 	return vecs
 end
@@ -143,9 +143,9 @@ function testMatrix(colvecs)
 	end
 end
 
-local mat = orthonormal({1, 1, 1, 2, 1})
-printSquareMatrix(mat)
-testMatrix(mat)
+--local mat = orthonormal({1, 2, 0, 0, 0})
+--printSquareMatrix(mat)
+--testMatrix(mat)
 
 local M = {}
 
