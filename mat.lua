@@ -80,7 +80,23 @@ function orthonormal(vec)
 	local vec = scmul(1, vec)
 	normeq(vec)
 	local vecs = {vec} -- column vectors
-	local c = maxcomponent(v)
+	local c = maxcomponent(vec)
+	--[[
+	idea is that, it should, before gram schmidt,
+	be roughly equivalent to identity matrix.
+	if the provided vector is kinda negative unit, that flips.
+	also, flips based on position of vec (c):
+		c == 1, vec in front: 0 swaps -> 0 flips
+		c == 2: 1 swap -> flip
+		c == 3: 2 swaps -> noflip
+		c even -> flip
+		c  odd -> noflip
+	thus, guessing that flip == vec[c]<0 xor c%2==0
+	--]]
+	function xor(a, b)
+		return not(a == b)
+	end
+	local shouldFlip = xor(vec[c] < 0, c % 2 == 0)
 	for i=1,c-1 do
 		table.insert(vecs, getcompvec(i, #vec))
 	end
@@ -90,6 +106,11 @@ function orthonormal(vec)
 	printSquareMatrix(vecs)
 	for i=2,#vecs do
 		vecs[i] = gramschmidt(vecs, i-1, vecs[i])
+	end
+	if shouldFlip then
+		for i=1,#vec do
+			vecs[2][i] = vecs[2][i] * -1
+		end
 	end
 	return vecs
 end
@@ -122,10 +143,9 @@ function testMatrix(colvecs)
 	end
 end
 
---local mat = orthonormal({1, 1, 1, 2, 1})
-
---printSquareMatrix(mat)
---testMatrix(mat)
+local mat = orthonormal({1, 1, 1, 2, 1})
+printSquareMatrix(mat)
+testMatrix(mat)
 
 local M = {}
 
@@ -138,10 +158,8 @@ returns array of column vectors
 or, hopefully it's a rotation matrix.
 it might flip things sometimes.
 orthonormal matrices can flip things.
-i have no idea how to fix it.
-if you know when it does that,
-swapping any two columns should fix it,
-but i have no idea how to tell when it does that.
+if it does that, please contact me,
+i have no idea how to fix it atm.
 --]]
 M.getOrthonormalMatrix = orthonormal
 
