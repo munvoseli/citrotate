@@ -140,7 +140,9 @@ it might flip things sometimes.
 contact me if it does that,
 might just need to multiply the second column by -1
 if the component of the supplied vector
-with the greatest magnitude has negative direction
+with the greatest magnitude has negative direction.
+or it could be something else entirely.
+who knows.
 --]]
 M.getOrthonormalMatrix = orthonormal
 
