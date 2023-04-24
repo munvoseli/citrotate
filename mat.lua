@@ -1,4 +1,3 @@
-local M = {}
 
 --[[
 trying this:
@@ -128,6 +127,21 @@ end
 --printSquareMatrix(mat)
 --testMatrix(mat)
 
-M.getOrthonormalMatrix = orthonormal -- array of column vectors
+local M = {}
+
+--[[
+accepts vector
+(internally, will scale that to length 1 if it's not already 1).
+returns array of column vectors
+  which represent orthonormal (rotation) matrix.
+
+or, hopefully it's an orthonormal matrix.
+it might flip things sometimes.
+contact me if it does that,
+might just need to multiply the second column by -1
+if the component of the supplied vector
+with the greatest magnitude has negative direction
+--]]
+M.getOrthonormalMatrix = orthonormal
 
 return M
