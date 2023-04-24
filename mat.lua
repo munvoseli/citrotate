@@ -1,4 +1,4 @@
-local v = { math.sqrt(2), math.sqrt(2), 0 }
+local M = {}
 
 --[[
 trying this:
@@ -8,11 +8,6 @@ and also applying anticommutativity with swaps
 
 oops, no longer trying that, thanks quintopia
 --]]
-
-local mat = {}
-for i=1,9 do
-	table.insert(mat, 0)
-end
 
 
 function dot(a, b)
@@ -128,7 +123,11 @@ function testMatrix(colvecs)
 	end
 end
 
-local mat = orthonormal({1, 1, 1, 2, 1})
+--local mat = orthonormal({1, 1, 1, 2, 1})
 
-printSquareMatrix(mat)
-testMatrix(mat)
+--printSquareMatrix(mat)
+--testMatrix(mat)
+
+M.getOrthonormalMatrix = orthonormal -- array of column vectors
+
+return M
