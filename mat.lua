@@ -5,6 +5,8 @@ trying this:
 https://en.wikipedia.org/wiki/Cross_product#Coordinate_notation
 but, say, cross(ijk)=l instead of i cross j = k
 and also applying anticommutativity with swaps
+
+oops, no longer trying that, thanks quintopia
 --]]
 
 local mat = {}
